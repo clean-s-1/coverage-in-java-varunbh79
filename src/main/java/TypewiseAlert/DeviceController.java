@@ -15,8 +15,4 @@ public class DeviceController implements IAlertTarget{
         return targetMsg;
     }
 
-    @Override
-    public boolean verifyTemperatureBreach(BreachType breachType) {
-        return breachType == BreachType.NORMAL;
-    }
 }
