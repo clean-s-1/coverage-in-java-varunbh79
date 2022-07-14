@@ -2,28 +2,33 @@ package TypewiseAlert;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 public class TypewiseAlertTest 
 {
     private EmailDispatcher emailDispatcher;
     private DeviceController deviceController;
     private TypewiseAlert typewiseAlert;
+    private TemperatureBreachClassifier temperatureBreachClassifier;
 
     @Before
     public void setup() {
         emailDispatcher = new EmailDispatcher();
         deviceController = new DeviceController();
         typewiseAlert = new TypewiseAlert();
+        temperatureBreachClassifier = new TemperatureBreachClassifier();
     }
 
     @Test
     public void infersBreachAsPerLimits()
     {
-        assertSame(TemperatureBreachClassifier.inferBreach(12, 20, 30), BreachType.TOO_LOW);
-        assertSame(TemperatureBreachClassifier.inferBreach(40, 20, 30), BreachType.TOO_HIGH);
-        assertSame(TemperatureBreachClassifier.inferBreach(20, 20, 30), BreachType.NORMAL);
+        assertSame(temperatureBreachClassifier.inferBreach(12, 20, 30), BreachType.TOO_LOW);
+        assertSame(temperatureBreachClassifier.inferBreach(40, 20, 30), BreachType.TOO_HIGH);
+        assertSame(temperatureBreachClassifier.inferBreach(20, 20, 30), BreachType.NORMAL);
     }
 
     @Test

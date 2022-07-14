@@ -3,7 +3,7 @@ package TypewiseAlert;
 
 public class TemperatureBreachClassifier {
 
-    public static BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
+    public  BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
 
         if (value < lowerLimit) {
             return BreachType.TOO_LOW;

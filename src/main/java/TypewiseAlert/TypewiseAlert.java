@@ -5,7 +5,8 @@ public class TypewiseAlert
     private static BreachType classifyTemperatureBreach(CoolingType coolingType, double tempInput) {
         Integer lowerLimit = coolingType.getLowTemp();
         Integer upperLimit = coolingType.getHighTemp();
-        return TemperatureBreachClassifier.inferBreach(tempInput,lowerLimit,upperLimit);
+        TemperatureBreachClassifier temperatureBreachClassifier = new TemperatureBreachClassifier();
+        return temperatureBreachClassifier.inferBreach(tempInput,lowerLimit,upperLimit);
     }
 
     public String sendAlert(AlertTarget alertTarget, CoolingType coolingType, double inputTemp) {
